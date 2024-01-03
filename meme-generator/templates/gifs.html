@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+  <h1>Gifs, Gifs, everywhere!</h1>
+{% endblock %}
+
+{% block content %}
+<div class="container search-container">
+  <form method="POST">
+    <div class="creator gif-creator">
+      <input id="searchInput" type="text" placeholder="Search for gifs" name="search_gif">
+      <button id="searchBtn">Search</button>
+    </div>
+  </form>
+
+  <form method="POST" action="{{url_for('memes.publish_meme')}}">
+    <input type="hidden" name="image_url" id="hiddenInput">
+      <div class="creator gif-creator">
+        <div class="search-results">
+          {% for gif in response.data %}
+            {% set media = gif['images']['original']['url']%}#
+            <img src="{{media}}">
+            <button onclick="save('{{media}}')">
+              Save to Feed
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+  </form>
+</div>
+
+  <script>
+    console.log(response)
+    function save(url) {
+      $('#hiddenInput').val(url);
+    }
+
+
+
+
+
+  </script>
+{% endblock %}
+{% set logged_in=True %}
+{% set page_title="Gifs" %}
