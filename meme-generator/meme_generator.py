@@ -95,20 +95,4 @@ def gif_search():
         return render_template('gifs.html', response=response)
     else:
         return redirect(url_for('auth.login_page'))
-
-
-
-
-
-
-############### Exercises ###############
-#
-#
-# Exercise 1: Get your Giphy API key.
-# Exercise 2: Render the gif search page.
-# Exercise 3: Search for gifs using the Giphy API.
-# Exercise 4: Save the gif image from the API response.
-#
-# Bonus: Remove the empty spaces in the username while signup and login.
-#
-#########################################
+        
